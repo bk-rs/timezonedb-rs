@@ -20,7 +20,7 @@ exclude = [
 all-features = true
 
 [features]
-default = []
+default = ["ip2location-country-information"]
 
 [dependencies]
 serde = { version = "1.0", default_features = false, features = ["std", "derive"] }
@@ -29,3 +29,5 @@ csv = { version = "1.1", default_features = false }
 
 chrono = { version = "0.4", default_features = false }
 chrono-tz = { version = "0.6", default_features = false }
+
+ip2location-country-information = { version = "0.1", default_features = false, features = ["once_cell"], optional = true }
