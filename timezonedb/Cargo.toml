@@ -1,0 +1,31 @@
+[package]
+name = "timezonedb"
+version = "0.0.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2021"
+description = "Time Zone database"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/timezonedb-rs"
+homepage = "https://github.com/bk-rs/timezonedb-rs"
+documentation = "https://docs.rs/timezonedb"
+keywords = []
+categories = []
+readme = "README.md"
+exclude = [
+    "/data/*.zip",
+    "/data/*.csv",
+]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+default = []
+
+[dependencies]
+serde = { version = "1.0", default_features = false, features = ["std", "derive"] }
+serde-field-with = { version = "0.1.2", default-features = false, features = ["std"] }
+csv = { version = "1.1", default_features = false }
+
+chrono = { version = "0.4", default_features = false }
+chrono-tz = { version = "0.6", default_features = false }
