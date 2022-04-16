@@ -9,6 +9,5 @@ cargo fmt -- --check
 cargo build-all-features
 cargo test-all-features -- --nocapture
 
-cargo test -p ip2location-ip2proxy --features _integration_tests -- --nocapture
-cargo test -p ip2location-ip2location --features _integration_tests -- --nocapture
+cargo test -p timezonedb --features _integration_tests -- --nocapture
 ```

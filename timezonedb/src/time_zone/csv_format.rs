@@ -63,15 +63,22 @@ impl fmt::Display for RecordsFromCsvError {
 
 impl std::error::Error for RecordsFromCsvError {}
 
+#[cfg(feature = "_integration_tests")]
+#[cfg(test)]
+pub static RECORDS: once_cell::sync::Lazy<Records> = once_cell::sync::Lazy::new(|| {
+    let csv = include_str!("../../data/time_zone.csv");
+    let records = Records::from_csv(csv.as_bytes()).unwrap();
+    records
+});
+
 #[cfg(test)]
 mod tests {
-    use super::*;
 
+    #[cfg(feature = "_integration_tests")]
     #[test]
-    fn test_from_csv() {
-        let csv = include_str!("../../data/time_zone.csv");
-        let records = Records::from_csv(csv.as_bytes()).unwrap();
-        println!("{:?}", records[0]);
-        assert_eq!(records.len(), 160704);
+    fn test_static() {
+        use super::*;
+
+        assert_eq!(RECORDS.iter().len(), 160704);
     }
 }

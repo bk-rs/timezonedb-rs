@@ -20,7 +20,9 @@ exclude = [
 all-features = true
 
 [features]
-default = ["ip2location-country-information"]
+default = []
+
+_integration_tests = []
 
 [dependencies]
 serde = { version = "1.0", default_features = false, features = ["std", "derive"] }
@@ -30,4 +32,11 @@ csv = { version = "1.1", default_features = false }
 chrono = { version = "0.4", default_features = false }
 chrono-tz = { version = "0.6", default_features = false }
 
-ip2location-country-information = { version = "0.1", default_features = false, features = ["once_cell"], optional = true }
+[dev-dependencies]
+once_cell = { version = "1.10" }
+
+[package.metadata.cargo-all-features]
+skip_optional_dependencies = true
+denylist = [
+    "_integration_tests"
+]
