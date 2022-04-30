@@ -1,5 +1,6 @@
 use chrono::FixedOffset;
 use chrono_tz::Tz;
+use country_code::CountryCode;
 use serde::{de, Deserialize, Deserializer};
 
 //
@@ -7,7 +8,7 @@ use serde::{de, Deserialize, Deserializer};
 pub struct Record {
     #[serde(deserialize_with = "serde_field_with::from_str")]
     pub zone_name: Tz,
-    pub country_code: Box<str>,
+    pub country_code: CountryCode,
     pub abbreviation: Box<str>,
     pub time_start: i64,
     #[serde(deserialize_with = "gmt_offset_deserialize")]
